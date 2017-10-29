@@ -78,6 +78,61 @@
       </dependency>
       <!-- springframe end -->
 
+
+    <dependency>
+      <groupId>net.paoding</groupId>
+      <artifactId>paoding-rose</artifactId>
+      <version>1.1.1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>spring-webmvc</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-logging</artifactId>
+          <groupId>commons-logging</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-digester</artifactId>
+          <groupId>commons-digester</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>commons-collections</artifactId>
+          <groupId>commons-collections</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>net.paoding</groupId>
+      <artifactId>paoding-rose-scanning</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>net.paoding</groupId>-->
+    <!--<artifactId>paoding-rose-jade</artifactId>-->
+    <!--</dependency>-->
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.10</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>catlife-api</finalName>

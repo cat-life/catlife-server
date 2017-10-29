@@ -1,8 +1,9 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
 
-<web-app>
   <display-name>Archetype Created Web Application</display-name>
 
   <!--配置spring-->
@@ -11,26 +12,38 @@
     <!--配置文件的路径-->
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+  <!--<listener>-->
+    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+  <!--</listener>-->
   <!--配置spring结束-->
 
-  <!--配置springMVC-->
-  <servlet>
-    <servlet-name>dispatcher</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <!--配置文件的路径-->
-      <param-value>classpath:applicationContext.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>dispatcher</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <!--配置springMVC结束-->
+  <filter>
+    <filter-name>roseFilter</filter-name>
+    <filter-class>net.paoding.rose.RoseFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>roseFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+  </filter-mapping>
+
+  <!--&lt;!&ndash;配置springMVC&ndash;&gt;-->
+  <!--<servlet>-->
+    <!--<servlet-name>dispatcher</servlet-name>-->
+    <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+    <!--<init-param>-->
+      <!--<param-name>contextConfigLocation</param-name>-->
+      <!--&lt;!&ndash;配置文件的路径&ndash;&gt;-->
+      <!--<param-value>classpath:applicationContext.xml</param-value>-->
+    <!--</init-param>-->
+    <!--<load-on-startup>1</load-on-startup>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>dispatcher</servlet-name>-->
+    <!--<url-pattern>/</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--&lt;!&ndash;配置springMVC结束&ndash;&gt;-->
 
 </web-app>
