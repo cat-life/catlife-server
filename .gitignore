@@ -12,7 +12,7 @@
 target
 *.xml.bak
 *.iml
-.idea
+.idea*
 tar.sh
 classes.tar
 
