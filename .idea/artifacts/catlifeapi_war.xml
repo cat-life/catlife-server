@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="catlifeapi:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="catlife-api.war">
-      <element id="artifact" artifact-name="catlifeapi:war exploded" />
-    </root>
-  </artifact>
-</component>
