@@ -41,6 +41,8 @@
         <version>${spring.version}</version>
       </dependency>
 
+
+
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-tx</artifactId>
@@ -78,6 +80,11 @@
       </dependency>
       <!-- springframe end -->
 
+    <dependency>
+      <artifactId>commons-collections</artifactId>
+      <groupId>commons-collections</groupId>
+      <version>3.1</version>
+    </dependency>
 
     <dependency>
       <groupId>net.paoding</groupId>
@@ -132,9 +139,73 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.10</version>
     </dependency>
-
   </dependencies>
+
   <build>
     <finalName>catlife-api</finalName>
+    <!-- build所需要的资源 -->
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    <!-- build所需要的资源 -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <!-- 编译使用1.7 -->
+          <source>1.7</source>
+          <target>1.7</target>
+          <fork>true</fork>
+          <verbose>true</verbose>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>false</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Rose>*</Rose>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <filtering>true</filtering>
+              <directory>${project.basedir}/src/main/webapp/WEB-INF
+              </directory>
+              <includes>
+                <include>**/*.txt</include>
+                <include>**/*.xml</include>
+                <include>**/*.properties</include>
+              </includes>
+              <excludes>
+                <exclude>/static</exclude>
+              </excludes>
+              <targetPath>WEB-INF</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
