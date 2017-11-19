@@ -1,4 +1,4 @@
-package com.catlife.controller;
+package com.catlife.controllers;
 
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
@@ -6,7 +6,7 @@ import net.paoding.rose.web.annotation.rest.Get;
 /**
  * Created by Wholanz on 2017/10/29.
  */
-@Path("/")
+@Path("")
 public class TestController {
     @Get("test")
     public String test() {

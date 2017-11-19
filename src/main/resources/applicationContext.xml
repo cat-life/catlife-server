@@ -35,9 +35,9 @@
     <bean id="jade.dataSource.com.catlife.dao" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://118.89.230.186:3306/catlife?useUnicode=true&amp;characterEncoding=utf-8"/>
-        <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="url" value="jdbc:mysql://118.89.230.186:3306/cat_life?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="username" value="catlife"/>
+        <property name="password" value="catLife2017"/>
         <!-- 用来验证连接是否生效的sql语句 -->
         <property name="validationQuery" value="SELECT 1"></property>
         <!-- 从池中获取连接前进行验证 -->

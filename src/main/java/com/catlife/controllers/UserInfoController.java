@@ -1,4 +1,4 @@
-package com.catlife.controller;
+package com.catlife.controllers;
 
 import com.catlife.dao.PersonalUserInfoDAO;
 import com.catlife.model.PersonalUserInfo;
@@ -8,6 +8,8 @@ import net.paoding.rose.web.annotation.rest.Get;
 import net.paoding.rose.web.annotation.rest.Post;
 import net.paoding.rose.web.annotation.rest.Put;
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,14 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Path("/user")
 public class UserInfoController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
+
     @Autowired
     PersonalUserInfoDAO personalUserInfoDAO;
 
     @Get("register")
     @Post("register")
     @Put("register")
-    public String register(@RequestParam("openId") String openId,
-                @RequestParam("nickName") String nickName) {
+    public String register(@Param("openId") String openId,
+                @Param("nickName") String nickName) {
+        logger.debug("openId:{},nickName:{}",openId,nickName);
         long userId;
         long curTime = System.currentTimeMillis();
         JSONObject jsonObject = new JSONObject();
@@ -32,6 +37,8 @@ public class UserInfoController {
 
         PersonalUserInfo personalUserInfo = new PersonalUserInfo()
                 .setOpenId(openId).setNickName(nickName).setCreateTime(curTime).setUpdateTime(curTime);
+
+        logger.debug("personalUserInfo:{}",personalUserInfo);
         try{
             userId = personalUserInfoDAO.insert(personalUserInfo);
             personalUserInfo.setId(userId);
@@ -48,12 +55,14 @@ public class UserInfoController {
             jsonObject.put("ret",0);
             jsonObject.put("msg",errorMsg);
         }
+        logger.debug("insert personalUserInfo return:{}",jsonObject.toString());
         return "@" +jsonObject.toString();
     }
 
 
     @Get("query")
-    public String query( @RequestParam(value = "userId")  long userId){
+    public String query( @Param(value = "userId")  long userId){
+        logger.debug("userId:{}",userId);
         PersonalUserInfo personalUserInfo =  personalUserInfoDAO.getByUserId(userId);
         JSONObject jsonObject = new JSONObject();
         if(personalUserInfo == null){
@@ -66,6 +75,7 @@ public class UserInfoController {
             jsonObject.put("ret",1);
             jsonObject.put("msg","query success");
         }
+        logger.debug("query personalUserInfo return:{}",jsonObject.toString());
         return "@" +jsonObject.toString();
     }
 }
