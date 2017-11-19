@@ -28,11 +28,14 @@
 
     <mvc:annotation-driven/>
 
+    <!-- DAO支持 -->
+    <bean class="net.paoding.rose.jade.context.spring.JadeBeanFactoryPostProcessor"/>
+
     <!-- 数据源配置 dbcp -->
     <bean id="jade.dataSource.com.catlife.dao" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/catlife?useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="url" value="jdbc:mysql://118.89.230.186:3306/catlife?useUnicode=true&amp;characterEncoding=utf-8"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
         <!-- 用来验证连接是否生效的sql语句 -->

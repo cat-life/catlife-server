@@ -1,4 +1,4 @@
-package com.catlife.controllers;
+package com.catlife.controller;
 
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
