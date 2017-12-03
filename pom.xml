@@ -11,6 +11,7 @@
   <properties>
     <!-- springframe 版本控制 -->
     <spring.version>4.1.1.RELEASE</spring.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
@@ -249,6 +250,13 @@
           </webResources>
         </configuration>
       </plugin>
-    </plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+  </plugins>
   </build>
 </project>
