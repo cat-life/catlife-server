@@ -27,16 +27,13 @@ public class UserInfoController {
     @Get("register")
     @Post("register")
     @Put("register")
-    public String register(@Param("openId") String openId,
-                @Param("nickName") String nickName) {
-        logger.debug("openId:{},nickName:{}",openId,nickName);
+    public String register(PersonalUserInfo personalUserInfo) {
         long userId;
         long curTime = System.currentTimeMillis();
         JSONObject jsonObject = new JSONObject();
         String errorMsg = null;
 
-        PersonalUserInfo personalUserInfo = new PersonalUserInfo()
-                .setOpenId(openId).setNickName(nickName).setCreateTime(curTime).setUpdateTime(curTime);
+        personalUserInfo.setCreateTime(curTime).setUpdateTime(curTime);
 
         logger.debug("personalUserInfo:{}",personalUserInfo);
         try{
